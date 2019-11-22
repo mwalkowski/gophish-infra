@@ -1,0 +1,6 @@
+---
+  - import_tasks: install-certbot.yml
+    when: create_certbot_certificate
+
+  - import_tasks: generate-certs.yml
+    when: create_certbot_certificate

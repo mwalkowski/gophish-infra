@@ -1,0 +1,2 @@
+letsencrypt_cert: "/etc/letsencrypt/live/{{ phish_domain }}/cert.pem"
+letsencrypt_key: "/etc/letsencrypt/live/{{ phish_domain }}/privkey.pem"

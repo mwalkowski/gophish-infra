@@ -1,0 +1,7 @@
+create_certbot_certificate: true
+certbot_package: certbot
+certbot_admin_email: "admin@{{ phish_domain }}"
+certbot_create_command: >-
+  certbot certonly --standalone --noninteractive --agree-tos
+  --email {{ certbot_admin_email }}
+  -d {{ phish_domain }}

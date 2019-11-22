@@ -1,0 +1,54 @@
+# tasks file for gophish
+---
+- name: download zip package
+  get_url:
+    url: "{{ gophish_version }}"
+    dest: "{{ gophish_tmp_zip }}"
+
+- name: create a directory if it does not exist
+  file:
+    path: "{{ gophish_dst_path }}"
+    state: directory
+
+- name: install unzip
+  apt:
+    name: unzip
+    state: "{{ apt_install_state | default('latest') }}"
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+
+- name: unzip gophish package
+  unarchive:
+    src: "{{ gophish_tmp_zip }}"
+    dest: "{{ gophish_dst_path }}"
+    remote_src: yes
+
+- name: remove zip file
+  file:
+    path: "{{ gophish_tmp_zip }}"
+    state: absent
+
+- name: create service file
+  template:
+    src: lib/systemd/system/gophish.service
+    dest: /lib/systemd/system/gophish.service
+    mode: '0644'
+
+- name: enable service
+  systemd:
+    name: gophish
+    state: started
+    enabled: yes
+
+- name: copy configuration file
+  template:
+    src: opt/gophish/config.json
+    dest: "{{ gophish_dst_path }}/config.json"
+    mode: '0644'
+    backup: yes
+
+- name: restart service
+  systemd:
+    name: gophish
+    state: restarted
+    enabled: yes

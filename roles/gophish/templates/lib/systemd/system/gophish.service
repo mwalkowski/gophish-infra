@@ -1,0 +1,12 @@
+[Unit]
+Description=gophish
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart={{ gophish_dst_path }}/gophish
+WorkingDirectory={{ gophish_dst_path }}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+---
+- name: check if certificate already exists.
+  stat:
+    path: "{{ letsencrypt_cert }}"
+  register: letsencrypt_cert
+
+- name: generate new certificate if one doesn't exist.
+  command: "{{ certbot_create_command }}"
+  when: not letsencrypt_cert.stat.exists

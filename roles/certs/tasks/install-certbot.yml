@@ -1,0 +1,3 @@
+---
+- name: install certbot
+  package: "name={{ certbot_package }} state=present"
