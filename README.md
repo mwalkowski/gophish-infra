@@ -1,4 +1,4 @@
-## Phising infra
+## Phising toolbox with Gophish, Cerbot and Postfix
 
 Set up a phining tool with postfix, gophish in Debian-like systems.
 
