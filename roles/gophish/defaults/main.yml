@@ -4,12 +4,12 @@ gophish_version: https://github.com/gophish/gophish/releases/download/v0.8.0/gop
 gophish_tmp_zip: /tmp/gophish_tmp.zip
 gophish_dst_path: /opt/gophish
 
-gophish_admin_server_listen_url: "0.0.0.0:3333"
-gophish_admin_server_use_tls: false
-gophish_admin_server_cert_path: "{{ letsencrypt_cert }}"
-gophish_admin_server_key_path: "{{ letsencrypt_key }}"
-
-phish_server_listen_url: "{{ '0.0.0.0:443' | default('0.0.0.0:80', phish_server_use_tls)}}"
 phish_server_use_tls: false
+phish_server_listen_url: "{{ '0.0.0.0:443' | default('0.0.0.0:80', phish_server_use_tls)}}"
 phish_server_cert_path: "{{ letsencrypt_cert }}"
 phish_server_key_path: "{{ letsencrypt_key }}"
+
+gophish_admin_server_listen_url: "0.0.0.0:3333"
+gophish_admin_server_use_tls: {{ phish_server_use_tls }}
+gophish_admin_server_cert_path: "{{ letsencrypt_cert }}"
+gophish_admin_server_key_path: "{{ letsencrypt_key }}"

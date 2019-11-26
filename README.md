@@ -4,7 +4,8 @@ Set up a phining tool with postfix, gophish in Debian-like systems.
 
 #### Requrements
 
-None
+- Phising domain
+- Server with public IP with Debian-like systems
 
 #### Variables
 * `create_certbot_certificate` [default: `true`] Creates tls certificates with [letsencrypt](https://letsencrypt.org/)
@@ -24,11 +25,16 @@ For postfix variables please see [postfix - ansible role](https://github.com/Oef
 - [gophish phishing toolkit](https://github.com/gophish/gophish)
 - [postfix - ansible role](https://github.com/Oefenweb/ansible-postfix)
 
+## Postconfig
+- configure spf record in domain provider
+- configure mx record in domain provider
+
 #### Example(s)
 
 A simple example that use SASL authentication and TLS encryption on the phishing page:
 
-```  
+```
+  # ansible-playbook example.yml -i inventory  -u username --ask-pass
   hosts: all
   become: true
   become_method: sudo
@@ -42,7 +48,7 @@ A simple example that use SASL authentication and TLS encryption on the phishing
     postfix_hostname: gooogle.com
     postfix_mailname: "{{ phish_domain }}"
     postfix_aliases:
-      - user: root
+      - user: no-replay
         alias: "no-replay@{{ phish_domain }}"
     postfix_sasl_password: test_passw0rd!
     postfix_inet_protocols: ipv4
