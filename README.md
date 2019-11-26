@@ -5,7 +5,7 @@ Set up a phining tool with postfix, gophish in Debian-like systems.
 #### Requrements
 
 - Phising domain
-- Server with public IP with Debian-like systems
+- Server with public IP and Debian-like systems
 
 #### Variables
 * `create_certbot_certificate` [default: `true`] Creates tls certificates with [letsencrypt](https://letsencrypt.org/)
