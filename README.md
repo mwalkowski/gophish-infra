@@ -34,7 +34,9 @@ For postfix variables please see [postfix - ansible role](https://github.com/Oef
 A simple example that use SASL authentication and TLS encryption on the phishing page:
 
 ```
-  # ansible-playbook example.yml -i inventory  -u username --ask-pass
+# ansible-playbook example.yml -i inventory  -u username --ask-pass
+---
+- name: Example playbook
   hosts: all
   become: true
   become_method: sudo
