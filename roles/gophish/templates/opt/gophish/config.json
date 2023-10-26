@@ -3,13 +3,13 @@
 		"listen_url": "{{ gophish_admin_server_listen_url }}",
 		"use_tls": {{ gophish_admin_server_use_tls | to_json }},
 		"cert_path": "{{ gophish_admin_server_cert_path }}",
-		"key_path": "{{ gophish_admin_server_key_path }}",
+		"key_path": "{{ gophish_admin_server_key_path }}"
 	},
 	"phish_server": {
 		"listen_url": "{{ phish_server_listen_url }}",
 		"use_tls": {{ phish_server_use_tls | to_json }},
 		"cert_path": "{{ phish_server_cert_path }}",
-		"key_path": "{{ phish_server_key_path }}",
+		"key_path": "{{ phish_server_key_path }}"
 	},
 	"db_name": "sqlite3",
 	"db_path": "gophish.db",
