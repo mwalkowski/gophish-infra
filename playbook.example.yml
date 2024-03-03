@@ -1,0 +1,23 @@
+# ansible-playbook example.yml -i inventory  -u username --ask-pass
+---
+- name: Example playbook
+  hosts: all
+  become: true
+  become_method: sudo
+  connection: ssh
+  roles:
+    - certs
+    - gophish
+    - postfix
+  vars:
+    phish_domain: gooogle.com
+    postfix_hostname: gooogle.com
+    postfix_mailname: "{{ phish_domain }}"
+    postfix_aliases:
+      - user: no-replay
+        alias: "no-replay@{{ phish_domain }}"
+    postfix_sasl_password: test_passw0rd!
+    postfix_inet_protocols: ipv4
+    postfix_smtpd_relay_restrictions: ["permit_mynetworks", "permit_sasl_authenticated", "reject_unauth_destination"]
+    gophish_admin_server_use_tls: true
+    phish_server_use_tls: true
