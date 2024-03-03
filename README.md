@@ -95,5 +95,5 @@ A simple example that use SASL authentication and TLS encryption on the phishing
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ### Acknowledgments
-[Gophish](https://github.com/gophish/gophish) for providing the foundational phishing toolkit.
+[Gophish](https://github.com/gophish/gophish) for providing the foundational phishing toolkit.  
 [Let's Encrypt](https://letsencrypt.org/) for enabling secure, automated TLS certificates.
